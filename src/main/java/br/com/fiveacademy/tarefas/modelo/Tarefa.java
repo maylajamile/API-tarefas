@@ -1,13 +1,13 @@
 package br.com.fiveacademy.tarefas.modelo;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Entity(name = "tarefas")
 public class Tarefa {
 	
 	@Id
@@ -15,8 +15,8 @@ public class Tarefa {
 	private Long id;
 	private String titulo;
 	private Boolean estaCompleta;
-	private Date data;
-	
+	private LocalDate data;
+
 	public Long getId() {
 		return id;
 	}
@@ -35,10 +35,10 @@ public class Tarefa {
 	public void setEstaCompleta(Boolean estaCompleta) {
 		this.estaCompleta = estaCompleta;
 	}
-	public Date getData() {
+	public LocalDate getData() {
 		return data;
 	}
-	public void setData(Date data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 
