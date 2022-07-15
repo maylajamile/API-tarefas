@@ -1,7 +1,9 @@
 package br.com.fiveacademy.tarefas.controller;
 
 import java.util.List;
+import java.util.Optional;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.fiveacademy.tarefas.form.AtualizacaoTarefa;
 import br.com.fiveacademy.tarefas.modelo.Tarefa;
 import br.com.fiveacademy.tarefas.repository.TarefasRepository;
 
@@ -39,14 +42,15 @@ public class TarefasController {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Tarefa> atualizarTarefa(@PathVariable Long id, @Valid @RequestBody Tarefa tarefa) {
-		Tarefa tarefaAtualizada = tarefasRepository.findById(id).get();
-		tarefaAtualizada.setTitulo(tarefa.getTitulo());
-		tarefaAtualizada.setEstaCompleta(tarefa.getEstaCompleta());
-		tarefaAtualizada.setData(tarefa.getData());
+	@Transactional
+	public ResponseEntity<Tarefa> atualizarTarefa(@PathVariable Long id, @Valid @RequestBody AtualizacaoTarefa form) {
+		Optional<Tarefa> optional = tarefasRepository.findById(id);
+		if (optional.isPresent()) {
+			Tarefa tarefa = form.atualizar(id, tarefasRepository);
+			return ResponseEntity.ok(new Tarefa(tarefa));
+		}
 		
-		tarefasRepository.save(tarefaAtualizada);
-	    return ResponseEntity.ok(tarefaAtualizada);
+		return ResponseEntity.notFound().build();
 	}
 	
 	@DeleteMapping("/{id}")

@@ -16,6 +16,15 @@ public class Tarefa {
 	private String titulo;
 	private Boolean estaCompleta;
 	private LocalDate data;
+	
+	public Tarefa(Tarefa tarefa) {
+		this.id = tarefa.getId();
+		this.titulo = tarefa.getTitulo();
+		this.estaCompleta = tarefa.getEstaCompleta();
+		this.data = tarefa.getData();
+	}
+	
+	public Tarefa () {}
 
 	public Long getId() {
 		return id;
