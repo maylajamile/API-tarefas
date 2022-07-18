@@ -54,6 +54,7 @@ public class TarefasController {
 	}
 	
 	@DeleteMapping("/{id}")
+	@Transactional
 	public ResponseEntity<?> deletarTarefa (@PathVariable Long id){
 		tarefasRepository.deleteById(id);
 		return ResponseEntity.ok().build();
