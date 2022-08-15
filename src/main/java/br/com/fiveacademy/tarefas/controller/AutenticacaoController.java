@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.fiveacademy.tarefas.dto.TokenDto;
 import br.com.fiveacademy.tarefas.form.LoginForm;
 import br.com.fiveacademy.tarefas.security.TokenService;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/auth")
@@ -28,6 +29,8 @@ public class AutenticacaoController {
 	private TokenService tokenService;
 
 	@PostMapping
+	@ApiOperation(value = "Autentica o usuário",
+		notes = "Este endpoint serve para autenticar o usuário e conceder permissões para criar, editar e excluir tarefas.")
 	public ResponseEntity<TokenDto> autenticar(@RequestBody @Valid LoginForm form){
 		UsernamePasswordAuthenticationToken dados = form.receberDadosConvertidos();
 		
