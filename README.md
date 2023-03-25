@@ -1,9 +1,9 @@
 <h1>API-tarefas</h1>
-<p>Nesse exercício de Spring Framework foi desenvolvido uma API onde o usuário pode buscar/criar/editar/deletar tarefas.</p>
+<p>Utilizando <em>Spring Framework</em>, foi desenvolvido uma API onde o usuário pode buscar/criar/editar/deletar tarefas.</p>
 
 Documentação: http://localhost:8080/swagger-ui.html
 
-## Componentes
+## Ferramentas
 
 - JDK 11
 - MySQL
