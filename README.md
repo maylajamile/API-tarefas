@@ -1,7 +1,7 @@
 <h1>API-tarefas</h1>
 <p>Utilizando <em>Spring Framework</em>, foi desenvolvido uma API onde o usuário pode buscar/criar/editar/deletar tarefas.</p>
 
-Documentação: http://localhost:8080/swagger-ui.html
+Acessar documentação com Swagger: http://localhost:8080/swagger-ui.html
 
 ## Ferramentas
 
